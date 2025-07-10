@@ -265,7 +265,8 @@ plot_map <- function(data,
   if (type=="cov") {
     
     # Check that var is numeric or a factor
-    if (!class(data[[var]]) %in% c("numeric", "factor", "character")) {
+    if (!class(data[[var]]) %in% c("integer", "numeric",
+                                   "factor", "character")) {
       stop("'var' should be numeric or a factor.")
     }
 
@@ -427,7 +428,7 @@ plot_map <- function(data,
       data_agg <- data_agg |>
         dplyr::group_by(area) |>
         dplyr::summarise(cases = sum(.data$cases, na.rm = TRUE),
-                         pop = sum(pop, na.rm = TRUE),
+                         pop = mean(pop, na.rm = TRUE),
                          .groups = "drop") |>
         dplyr::mutate (inc = (.data$cases/pop)*pt)
     }
@@ -609,16 +610,16 @@ plot_map <- function(data,
       out <- out +
         ggplot2::geom_point(data = data.frame(lab = "NA"), x = NA, y = NA,
                             fill = NA, size = 7, shape = 15, na.rm = TRUE,
-                            aes(color = .data$lab), show.legend = TRUE) +
+                            ggplot2::aes(color = .data$lab), show.legend = TRUE) +
 
         ggplot2::scale_color_manual(values = c("NA" = "grey50"),
                                     guide = ggplot2::guide_legend(
                                       override.aes = list(fill = "grey50",
                                                           color = "grey20"))) +
         ggplot2::labs(color = "") +
-        ggplot2::guides(fill = guide_colorbar(order = 1),
+        ggplot2::guides(fill = ggplot2::guide_colorbar(order = 1),
                         color = ggplot2::guide_legend(order = 2)) +
-        theme(legend.key = element_blank())
+        ggplot2::theme(legend.key = ggplot2::element_blank())
     }
   }
   

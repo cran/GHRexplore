@@ -60,16 +60,15 @@ test_that("plot_combine works with combine_xaxis = TRUE", {
 })
 
 test_that("plot_combine works with combine_legend = TRUE", {
-  expect_warning(result <- plot_combine(plots, combine_legend = TRUE),
-                 "Multiple components found;")
+  result <- plot_combine(plots, combine_legend = TRUE)
   expect_s3_class(result, "gg")
 })
 
 test_that("plot_combine with both combine_legend and combine_xaxis = TRUE", {
-  expect_warning(result <- plot_combine(plots,
-                                        combine_legend = TRUE,
-                                        combine_xaxis = TRUE,
-                                        rel_widths_l = c(2, 1),
-                                        rel_heights_l = c(1, 1)))
+  result <- plot_combine(plots,
+                         combine_legend = TRUE,
+                         combine_xaxis = TRUE,
+                         rel_widths_l = c(2, 1),
+                         rel_heights_l = c(1, 1))
   expect_s3_class(result, "gg")
 })

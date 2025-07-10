@@ -1,9 +1,13 @@
-# GHRexplore  <img src='man/figures/logo_IDExtremes.jpg' align="right" width="20%" /> <span> <span> <img src='man/figures/logo_BSC.png' align="right" width="18%" /> 
+# GHRexplore  <img src='man/figures/logo_IDExtremes.jpg' align="right" width="18%" /> <span> <span> <img src='man/figures/logo_BSC.png' align="right" width="16%" /> 
 
 <!-- badges: start -->
-[![License: GPL v2](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
+[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
+[![CRAN status](https://www.r-pkg.org/badges/version/GHRexplore)](https://cran.r-project.org/package=GHRexplore)
+[![CRAN downloads total](http://cranlogs.r-pkg.org/badges/grand-total/GHRexplore)](https://cran.r-project.org/package=GHRexplore)
+[![CRAN downloads month](http://cranlogs.r-pkg.org/badges/GHRexplore)](https://cran.r-project.org/package=GHRexplore)
 <!-- badges: end -->
 
+<img src='man/figures/GHRexplore.png' align="right" width="16%" />
 
 ## Overview
 

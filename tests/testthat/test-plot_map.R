@@ -52,7 +52,8 @@ test_that("plot_map supports faceting by year", {
 
 test_that("plot_map requires time column to be in date format when by_year= TRUE", {
   testdata_wrongtime <- testdata
-  testdata_wrongtime$time <- as.character(format.Date(testdata$time, "%d-%m-%Y"))  # Convert to incorrect format
+  # Convert to incorrect format
+  testdata_wrongtime$time <- as.character(format.Date(testdata$time, "%d-%m-%Y"))  
   expect_error(plot_map(testdata_wrongtime,
                         var = "cases",
                         time = "time",

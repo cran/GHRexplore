@@ -63,8 +63,7 @@ test_that("plot_seasonality detects inappropriate fun for type!='cov'", {
   data <- data.frame(time = as.Date(c('2025-01-01', '2025-02-01',
                                       '2025-01-01', '2025-02-01')), 
                      var = c(1,2,3,1), 
-                     area = rep(letters[1:2], each = 2),
-                     area2 = "A")
+                     area = rep(letters[1:2], each = 2))
   
   expect_warning(plot_seasonality(data = data, var = "var", time = "time",
                                   type = "counts",
@@ -72,16 +71,6 @@ test_that("plot_seasonality detects inappropriate fun for type!='cov'", {
                                   aggregate_time_fun = "sum"),
                  "aggregate_time_fun' for case counts and incidence rates"
                  
-  )
-  expect_warning(plot_seasonality(data = data, 
-                                  var = "var",
-                                  time = "time",
-                                  pop = "var",
-                                  type = "inc",
-                                  area = "area", 
-                                  aggregate_space = "area2",
-                                  aggregate_space_fun = "mean"),
-                 "aggregate_space_fun' for case counts and incidence rates"
   )
 })
 

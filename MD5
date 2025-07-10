@@ -1,6 +1,6 @@
-3d1fa3154931be9a8a42b80a1cccf452 *DESCRIPTION
+72ed896f6809370087b3d4960835a349 *DESCRIPTION
 3cf6d8dbd130a16727dacc70ac06e301 *NAMESPACE
-0ab37230a4f370dc411849265b8d0db1 *NEWS.md
+00c98f490e22f4cec8127c8ca9122c7d *NEWS.md
 7661208723204036563e01049da353b7 *R/GHR_palette.R
 df6cc46bc7fae1a55b713f3d5065b35a *R/GHRexplore-package.R
 37bf16d9116051e12808355b3694d313 *R/dengue_MS.R
@@ -10,8 +10,8 @@ df6cc46bc7fae1a55b713f3d5065b35a *R/GHRexplore-package.R
 2297606923d84e3155c6aa5576541db2 *R/plot_combine.R
 a2194066f27f65f4120875db40ed6b73 *R/plot_compare.R
 47cded7e3d4b52bd54be0e7d3208b3dc *R/plot_correlation.R
-56c536368dc3858c7bb6d31f3f1d9cff *R/plot_heatmap.R
-35a6fd7f4e816d14be2f773151507a52 *R/plot_map.R
+4857e0f8ba6dbe49628587c9e402a692 *R/plot_heatmap.R
+75d76d6ab62e8d337ad27430f147d7d4 *R/plot_map.R
 10e99b5ea3e799aaf5fd97971d5dbb70 *R/plot_multiple.R
 8b92ff7d182fd0b9218c2b5d921ee49b *R/plot_multiple_common.R
 ef560f5735bf85f4e75a723ab4dd5008 *R/plot_multiple_map.R
@@ -19,7 +19,7 @@ ef560f5735bf85f4e75a723ab4dd5008 *R/plot_multiple_map.R
 7e11483c22ddef97bf36e20c5ba8395a *R/plot_timeseries.R
 38a2ced5befdc08847df9ec30b932972 *R/utils.R
 b7bc85ed1c0af2618ef78c572fd33a7b *R/utils_global_vars.R
-e12e95e4a3b21122ebd7dec4e58bd7f7 *README.md
+e5d67ebcc2df7b95621f1222f647455a *README.md
 469dbb1c6b682ab962b9ecd152506b90 *build/vignette.rds
 a82f59c9da3f3fcd657ea332a267d548 *data/dengue_MS.rda
 25e6c6107bd9582cec1d4725c179d1ff *data/dengue_SP.rda
@@ -33,6 +33,7 @@ e24bcfab6e9e9d4ea10709cc3fccd53c *man/GHR_palette.Rd
 9bf9f50bc7f6ecb77adf6b160010696b *man/aggregate_cov.Rd
 b790e40d5227cb0cba18bc69a2ba909b *man/dengue_MS.Rd
 0607b5f263255a3eb89b1b0f1cfb1559 *man/dengue_SP.Rd
+f496e7d91398239dc54619183ba9e8cd *man/figures/GHRexplore.png
 72f8622169fa17fcdb8172bc39164721 *man/figures/README-example.png
 cbb741e27f376519578617b7faa14163 *man/figures/logo_BSC.png
 e46b162bc280000cf2df1f57f028f397 *man/figures/logo_IDExtremes.jpg
@@ -50,12 +51,12 @@ e1fd09dfa66121add477a0c61cda3271 *tests/testthat.R
 47b5747a93b9f18e50814a7a9b7849e3 *tests/testthat/test-GHR_palette.R
 b9e6742d0c4d960fc42754c74ad5a003 *tests/testthat/test-helper_functions.R
 ce9a94cbe86117ca643a1755360949c3 *tests/testthat/test-plot_bivariate.R
-00aadd53e99953e62c6ba39dad6be684 *tests/testthat/test-plot_combine.R
+ebf2c629b1273f8edae98ed3785407d7 *tests/testthat/test-plot_combine.R
 79230dd305a69ab049734624fdcf4ba0 *tests/testthat/test-plot_compare.R
 abc3ea67a71353dc2f6991de00df5c84 *tests/testthat/test-plot_correlation.R
 e793a6ae936c7579232b40f3f6f1eb98 *tests/testthat/test-plot_heatmap.R
-0451d50022a942b6c0cd32fe95058c6c *tests/testthat/test-plot_map.R
+42e411eba803daa86dda099c42905fc3 *tests/testthat/test-plot_map.R
 f4e2502dea4cad16b2220f9dcb3a423f *tests/testthat/test-plot_multiple.R
-030a87cdb307cc5efce227a11eda417e *tests/testthat/test-plot_seasonality.R
+abcfa153c85d358e7899c02d9d67af32 *tests/testthat/test-plot_seasonality.R
 864e5d27dc3a2084699a5e8fc4bada8c *tests/testthat/test-plot_timeseries.R
 ccf34c776bcbbaf27feaa975a97aed71 *vignettes/GHRexplore.Rmd
