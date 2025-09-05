@@ -54,6 +54,42 @@ plot_timeseries(dengue_MS, var = "dengue_cases", type = "inc", pop = "population
                 time = "date", area = "micro_code", aggregate_space = "meso_code",
                 pt = 1000, transform = "log10p1")
 
+## ----ts2-1, fig.width=7, fig.height=5-----------------------------------------
+plot_timeseries2(dengue_MS,
+                 var = c("tmax", "pdsi"),
+                 type = c("cov", "cov"),
+                 time = "date", 
+                 area = "micro_code",
+                 align = "mean")
+
+## ----ts2-2, fig.width=7, fig.height=4-----------------------------------------
+plot_timeseries2(dengue_MS,
+                 var = c("tmax", "pdsi"),
+                 type = c("cov", "cov"),
+                 time = "date", 
+                 area = "micro_code",
+                 aggregate_space = "meso_code",
+                 palette = c("tomato", "royalblue"),
+                 var_label = c("Maximum temp.", "PDSI"),
+                 align = "mean")
+
+## ----ts2-3, fig.width=7, fig.height=4-----------------------------------------
+plot_timeseries2(dengue_MS,
+                 var = c("dengue_cases", "pdsi"),
+                 type = c("inc", "cov"),
+                 pop = "population", 
+                 time = "date", 
+                 area = "micro_code",
+                 aggregate_space = "meso_code")
+
+## ----ts2-4, fig.width=7, fig.height=4-----------------------------------------
+plot_timeseries2(dengue_MS,
+                 var = c("dengue_cases", "pdsi"),
+                 type = c("counts", "cov"),
+                 time = "date", 
+                 area = "micro_code",
+                 aggregate_space = "meso_code")
+
 ## ----heatmap1, fig.width=6, fig.height=5--------------------------------------
 plot_heatmap(dengue_MS, var = "pdsi", type = "cov", var_label = "PDSI",
              time = "date", area = "micro_code",
@@ -70,19 +106,20 @@ plot_seasonality(dengue_MS, var = "tmin", var_label = "Minimum temperature",
                  aggregate_space = "meso_code") 
 
 ## ----map1, fig.width=5--------------------------------------------------------
-plot_map(data = dengue_MS, var = "urban",  time = "date", type = "cov", area = "micro_code",  
-         map = map_MS, map_area = "code", by_year = FALSE, var_label= "Urbanicity",
-         palette = "-Heat")
+plot_map(data = dengue_MS, var = "urban",  time = "date", 
+         type = "cov", area = "micro_code",  map = map_MS, 
+         map_area = "code", aggregate_time = "all", 
+         var_label= "Urbanicity", palette = "-Heat")
 
 ## ----map2, fig.width=5, fig.height=4------------------------------------------
 plot_map(dengue_MS, var = "dengue_cases", type = "inc", pop = "population", 
          pt = 1000, time = "date", area = "micro_code",  
-         map = map_MS, map_area = "code", by_year = TRUE, 
+         map = map_MS, map_area = "code", aggregate_time = "year", 
          bins = 5, bins_method = "quantile", palette = "-Rocket")  
 
 ## ----map3, fig.width=4, fig.height=3------------------------------------------
 plot_map(data = dengue_MS, var = "biome_name", type = "cov",
-         time = "date", area = "micro_code", by_year = FALSE,
+         time = "date", area = "micro_code", aggregate_time = "all", 
          map = map_MS, map_area = "code", var_label= "Biome")
 
 ## ----biv1, fig.width=5--------------------------------------------------------

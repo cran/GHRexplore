@@ -55,14 +55,16 @@ between 2000 and 2016.}
 \url{https://github.com/drrachellowe/hydromet_dengue}
 }
 \usage{
-dengue_MS
+data(dengue_MS)
 }
 \description{
-Data frame containing the monthly number of notified dengue cases by
-municipality in the \emph{Mato Grosso do Sul} state of Brazil, as well as set
-of spatial and spatio-temporal covariates
-(e.g., environmental, socio-economic and meteo-climatic factors).
-This dataset is a subset of the original containing observations
-over the entire Brazil.
+Monthly number of notified dengue cases by
+municipality in the \emph{Mato Grosso do Sul} state of Brazil and a set
+of spatial and spatio-temporal covariates.
+}
+\details{
+In addition to the dengue counts, the dataset contains a set of environmental,
+socio-economic and meteo-climatic factors. This dataset is a subset of the
+original containing observations over the entire Brazil.
 }
 \keyword{datasets}

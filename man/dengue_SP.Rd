@@ -21,7 +21,7 @@ A data frame with 678 rows and 8 columns:
 \url{https://info.dengue.mat.br/services/api}
 }
 \usage{
-dengue_SP
+data(dengue_SP)
 }
 \description{
 Data frame containing the weekly number of notified dengue cases in

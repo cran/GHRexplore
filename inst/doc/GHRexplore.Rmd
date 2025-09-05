@@ -136,6 +136,58 @@ plot_timeseries(dengue_MS, var = "dengue_cases", type = "inc", pop = "population
                 pt = 1000, transform = "log10p1")
 ```
 
+## Dual-axis time series
+
+`plot_timeseries2` produces two-axis time series plots of covariates, case counts, or incidence rates. Similarly to `plot_timeseries`, it allows for spatial and temporal aggregations, plotting single or multiple time series of different areas simultaneously using facets, and axis and title labeling. The main difference between the two time series functions is that, in `plot_timeseries2` the arguments `var`, `type` and optionally `var_label` and `ylab` need to be of length 2, corresponding to the left and right axes respectively. 
+
+We start by plotting the time series data for two covariates (note `type=c("cov", "cov")`): maximum temperature and PDSI. We choose to align the two axis by forcing the mean of the two variables to be aligned:
+
+```{r ts2-1, fig.width=7, fig.height=5}
+plot_timeseries2(dengue_MS,
+                 var = c("tmax", "pdsi"),
+                 type = c("cov", "cov"),
+                 time = "date", 
+                 area = "micro_code",
+                 align = "mean")
+```
+
+We now improve on this by performing spatial aggregation into larger *meso* areas and specifying custom colours and labels:
+
+```{r ts2-2, fig.width=7, fig.height=4}
+plot_timeseries2(dengue_MS,
+                 var = c("tmax", "pdsi"),
+                 type = c("cov", "cov"),
+                 time = "date", 
+                 area = "micro_code",
+                 aggregate_space = "meso_code",
+                 palette = c("tomato", "royalblue"),
+                 var_label = c("Maximum temp.", "PDSI"),
+                 align = "mean")
+```
+
+One of the most interesting applications of `plot_timeseries2` is to visualize in the same graph disease cases and a candidate predictor. We do that in the following example, where we visualize dengue incidence and maximum temperature (note `type=c("inc", "cov")` and the `pop` argument):
+
+```{r ts2-3, fig.width=7, fig.height=4}
+plot_timeseries2(dengue_MS,
+                 var = c("dengue_cases", "pdsi"),
+                 type = c("inc", "cov"),
+                 pop = "population", 
+                 time = "date", 
+                 area = "micro_code",
+                 aggregate_space = "meso_code")
+```
+
+Similarly, we can visualize case counts together with a covariate (note `type=c("counts", "cov")`).
+
+```{r ts2-4, fig.width=7, fig.height=4}
+plot_timeseries2(dengue_MS,
+                 var = c("dengue_cases", "pdsi"),
+                 type = c("counts", "cov"),
+                 time = "date", 
+                 area = "micro_code",
+                 aggregate_space = "meso_code")
+```
+
 ## Heatmap
 
 `plot_heatmap` plots time series heatmaps of covariates, case counts, or incidence rates. Years are displayed on the y axis and weeks or months on the x axis. The function allows for spatial and temporal aggregations, plotting single or multiple time series for different areas simultaneously (using facets), color transformations, and axis and title labeling.
@@ -177,17 +229,18 @@ plot_seasonality(dengue_MS, var = "tmin", var_label = "Minimum temperature",
 In this first example, we plot average urbanicity levels (note `type="cov"`) over the entire study period while using an inverted palette:
 
 ```{r map1, fig.width=5}
-plot_map(data = dengue_MS, var = "urban",  time = "date", type = "cov", area = "micro_code",  
-         map = map_MS, map_area = "code", by_year = FALSE, var_label= "Urbanicity",
-         palette = "-Heat")
+plot_map(data = dengue_MS, var = "urban",  time = "date", 
+         type = "cov", area = "micro_code",  map = map_MS, 
+         map_area = "code", aggregate_time = "all", 
+         var_label= "Urbanicity", palette = "-Heat")
 ```
 
-We now plot case incidence per 1,000 persons (note `type="inc"` and `pt=1000`) for every year (`by_year=TRUE`) and binning into 5 categories using the quantile method (see `bins` and `bins_method` arguments).
+We now plot case incidence per 1,000 persons (note `type="inc"` and `pt=1000`) for every year (`aggregate_time = "year"`) and binning into 5 categories using the quantile method (see `bins` and `bins_method` arguments).
 
 ```{r map2, fig.width=5, fig.height=4}
 plot_map(dengue_MS, var = "dengue_cases", type = "inc", pop = "population", 
          pt = 1000, time = "date", area = "micro_code",  
-         map = map_MS, map_area = "code", by_year = TRUE, 
+         map = map_MS, map_area = "code", aggregate_time = "year", 
          bins = 5, bins_method = "quantile", palette = "-Rocket")  
 ```
 
@@ -195,7 +248,7 @@ Lastly, here is one example with the categorical, time-invariant *biome* covaria
 
 ```{r map3, fig.width=4, fig.height=3}
 plot_map(data = dengue_MS, var = "biome_name", type = "cov",
-         time = "date", area = "micro_code", by_year = FALSE,
+         time = "date", area = "micro_code", aggregate_time = "all", 
          map = map_MS, map_area = "code", var_label= "Biome")
 ```
 

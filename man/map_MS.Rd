@@ -12,7 +12,7 @@ A simple feature (sf) object including 11 rows and 2 columns:
 }
 }
 \usage{
-map_MS
+data(map_MS)
 }
 \description{
 Administrative boundaries (polygon geometries) of the 11 municipalities

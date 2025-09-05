@@ -27,7 +27,9 @@
 #' @param map_area Name of the variable that identifies the different locations
 #' (e.g., areal units) in the map object. If not specified, it assumes the same
 #' name as in `area`.
-#' @param by_year Logical, if TRUE a map for each year is produced.  
+#' @param aggregate_time Temporal scale for visualization and aggregation. Options 
+#' include "all" (across all time points) and "year" (default).
+#' @param by_year Deprecated. Use 'aggregate_time' instead.
 #' @param aggregate_time_fun Character indicating the function to be used
 #' in the aggregation over time for `type="cov"`. Options are "mean" (default),
 #' "median", "sum". For case counts and incidence, "sum" is always applied.
@@ -48,7 +50,9 @@
 #' Possible values are "quantile" (default) and "equal".
 #' @param bins_label Optional labels for the bins. They must have the same length 
 #' as the number of bins. Defaults to NULL (default interval labels).
-
+#' @param ... Additional aesthetics to be passed to geom_sf. Possible values 
+#' include `colour` (e.g., `colour="black"`), linewidth (e.g., `linewidth=0.1`),
+#' linetype (e.g., `linetype=2`), and alpha (e.g., `alpha=0.8`).
 #' @return A ggplot2 choropleth map.
 #' @export
 #'
@@ -67,9 +71,9 @@
 #'          area = "micro_code",  
 #'          map = map_MS,         
 #'          map_area = "code",   
+#'          aggregate_time = "all",
 #'          aggregate_time_fun = "mean",         
 #'          palette ="Reds",
-#'          by_year = FALSE,
 #'          var_label= "Min Temp.")
 #' 
 #' # Categorical covariate
@@ -77,10 +81,10 @@
 #'          var = "biome_name",        
 #'          time = "date",      
 #'          area = "micro_code", 
+#'          aggregate_time = "all",
 #'          map = map_MS,       
 #'          map_area = "code",  
 #'          palette ="Viridis",
-#'          by_year = FALSE,
 #'          var_label= "Biome")
 #' 
 #' # Case counts by year (log)
@@ -117,7 +121,8 @@ plot_map <- function(data,
                      area = NULL,
                      map = NULL,
                      map_area = NULL,
-                     by_year = TRUE, 
+                     by_year = NULL, 
+                     aggregate_time = "year",
                      aggregate_time_fun = "mean",
                      transform = "identity",
                      title = NULL,
@@ -126,9 +131,16 @@ plot_map <- function(data,
                      centering = NULL,
                      bins = NULL,
                      bins_method = "quantile",
-                     bins_label = NULL){
+                     bins_label = NULL,
+                     ...){
   
   # Data checks ----
+  
+  # Deprecated arguments
+  if (!missing(by_year)) {
+   stop(paste0("The argument 'by_year' has been deprecated. Please use ",
+               "'aggregate_time' instead.")) 
+  }
   
   # Check data exists and is a data.frame
   if (missing(data)) {
@@ -163,6 +175,11 @@ plot_map <- function(data,
   # Check if 'area' exists in data
   if (!is.null(area) && is.null(data[[area]])) {
     stop("No column of the data matches the 'area' argument")
+  }
+  
+  # Check that 'aggregate_time is 'all' or 'year'
+  if (!aggregate_time %in% c("all", "year")) {
+    stop("aggregate_time can be 'all' or 'year'")
   }
   
   # Check that 'aggregate_time_fun is one of the following functions
@@ -269,16 +286,16 @@ plot_map <- function(data,
                                    "factor", "character")) {
       stop("'var' should be numeric or a factor.")
     }
-
+    
     ## Factor ----
     if (class(data[[var]]) %in% c("factor", "character")) {
       
       data[["plot_var"]] <- as.factor(data[[var]])
       data_unique <- data 
       data_unique$area <- data[[area]]
-
+      
       # Check the covariate is time-invariant during all period
-      if(!isTRUE(by_year)){
+      if(aggregate_time == "all"){
         
         data_distinct <- data_unique |> 
           dplyr::group_by(area)  |>
@@ -287,7 +304,7 @@ plot_map <- function(data,
         
         if(any(data_distinct$n_unique > 1)){
           stop(paste0("plot_map does not accept time-varying categorical covariates. ",
-                      "You may want to try setting by_year=TRUE"))
+                      "You may want to try setting aggregate_time='year'"))
         }else{
           
           # Proceed if so
@@ -301,9 +318,9 @@ plot_map <- function(data,
                             by.x = map_area, by.y = area,
                             all.x = TRUE)
         }
-          
-      # Check the covariate is time-invariant within years
-      }else if(isTRUE(by_year)){
+        
+        # Check the covariate is time-invariant within years
+      }else if(aggregate_time == "year"){
         
         data_unique$year <- as.numeric(format(data[[time]], "%Y"))
         data_distinct <- data_unique |> 
@@ -335,12 +352,12 @@ plot_map <- function(data,
         }
       }
     }
-
+    
     # Numeric ----
     else if(is.numeric(data[[var]])){
       
-      # If by_year = TRUE, add a 'year' column to the data
-      if (by_year == TRUE) {
+      # If aggregate_time == "year", add a 'year' column to the data
+      if (aggregate_time == "year") {
         data_agg <- data |>
           aggregate_cov(var = var,
                         time = time,
@@ -357,8 +374,8 @@ plot_map <- function(data,
       # Rename for plotting
       data_agg$plot_var <- data_agg$var
       
-      # Expand the map if by_year = TRUE
-      if (by_year == TRUE) {
+      # Expand the map if aggregate_time == "year"
+      if (aggregate_time == "year") {
         
         # Extract the unique years from the aggregated data
         all_years <- unique (data_agg$time)
@@ -379,7 +396,7 @@ plot_map <- function(data,
         
       } else {
         
-        # If not by_year, just merge by area
+        # If aggregate_time == "all", just merge by area
         map_data <- merge(
           map,
           data_agg,
@@ -400,7 +417,7 @@ plot_map <- function(data,
     }
     
     # If by_year = TRUE, add a 'year' column to the data
-    if (isTRUE(by_year)) {
+    if (aggregate_time=="year") {
       
       data_agg <- data |>
         aggregate_cases(
@@ -423,7 +440,7 @@ plot_map <- function(data,
                          pop = mean(pop, na.rm = TRUE),
                          .groups = "drop")
       
-      # If not by_year, just merge by area
+      # If aggregate_time=="all", just merge by area
       # Aggregate the cases and pop across all years within each area
       data_agg <- data_agg |>
         dplyr::group_by(area) |>
@@ -440,8 +457,8 @@ plot_map <- function(data,
       data_agg$plot_var <- data_agg$cases
     }
     
-    # Expand the map if by_year = TRUE
-    if (isTRUE(by_year)) {
+    # Expand the map if aggregate_time=="year"
+    if (aggregate_time=="year") {
       # Extract the unique years from the aggregated data
       all_years <- unique (data_agg$time)
       
@@ -548,7 +565,7 @@ plot_map <- function(data,
   
   # Base plot
   out <- ggplot2::ggplot(map_data) +
-    ggplot2::geom_sf(ggplot2::aes(fill = plot_var)) + 
+    ggplot2::geom_sf(ggplot2::aes(fill = plot_var), ...) + 
     ggplot2::labs(fill = legend) +
     ggplot2::theme_void() +
     theme(plot.margin = unit(rep(0.1, 4), "cm")) +
@@ -565,7 +582,7 @@ plot_map <- function(data,
   if(!is.null(title)){
     out <- out + ggplot2::ggtitle(title)
   }
-
+  
   # Customize color gradient 
   if(is.factor(map_data[["plot_var"]])){ # Categorical variable and bins
     
@@ -595,12 +612,12 @@ plot_map <- function(data,
     # Apply transformation and palette
     if(transform == "log10p1"){
       out <- out + ggplot2::scale_fill_gradientn(colors = my_palette,
-                                             transform = .log10p1_trans,
-                                             breaks = .log10_breaks_like(map_data$plot_var),
-                                             labels = .log10_breaks_like(map_data$plot_var))
+                                                 transform = .log10p1_trans,
+                                                 breaks = .log10_breaks_like(map_data$plot_var),
+                                                 labels = .log10_breaks_like(map_data$plot_var))
     }else{
       out <- out + ggplot2::scale_fill_gradientn(colors = my_palette,
-                                             transform = transform)
+                                                 transform = transform)
     }
     out <- out + ggplot2::theme(legend.key.height = ggplot2::unit(0.9, "cm"))
     
@@ -611,7 +628,7 @@ plot_map <- function(data,
         ggplot2::geom_point(data = data.frame(lab = "NA"), x = NA, y = NA,
                             fill = NA, size = 7, shape = 15, na.rm = TRUE,
                             ggplot2::aes(color = .data$lab), show.legend = TRUE) +
-
+        
         ggplot2::scale_color_manual(values = c("NA" = "grey50"),
                                     guide = ggplot2::guide_legend(
                                       override.aes = list(fill = "grey50",
@@ -624,7 +641,7 @@ plot_map <- function(data,
   }
   
   # Facet by year if needed
-  if (by_year == TRUE) {
+  if (aggregate_time=="year") {
     out <- out + facet_wrap(~ .data$year)
   }
   

@@ -47,10 +47,10 @@ test_that("plot_map supports faceting by year", {
                          map = map,         # the sf object for the map 
                          map_area = "code",    # Variable defining the area in the sf object
                          palette ="Reds", 
-                         by_year = TRUE))
+                         aggregate_time='year'))
 })
 
-test_that("plot_map requires time column to be in date format when by_year= TRUE", {
+test_that("plot_map requires time column to be in date format when aggregate_time='year'", {
   testdata_wrongtime <- testdata
   # Convert to incorrect format
   testdata_wrongtime$time <- as.character(format.Date(testdata$time, "%d-%m-%Y"))  
@@ -60,7 +60,7 @@ test_that("plot_map requires time column to be in date format when by_year= TRUE
                         area = "area",
                         map = map,
                         map_area= "code", 
-                        by_year = TRUE),
+                        aggregate_time='year'),
                "'Date' should be in 'yyyy-mm-dd' format", fixed = TRUE)
 })
 

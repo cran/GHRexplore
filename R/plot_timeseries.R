@@ -50,6 +50,7 @@
 #' `highlight` is used (i.e. single time series), otherwise defaults to the 
 #' "IDE2" palette. 
 #' @return A ggplot2 time series plot.
+#' @seealso [plot_timeseries2] for dual-axis time series plots.
 #' @export
 #'
 #' @examples
@@ -319,8 +320,7 @@ plot_timeseries<- function(data,
     }
   }
   
-  # Option C multiple areas, aggregation ----
-  # aggregation over space or time is required 
+  # Option C: aggregation ----
   else if (!is.null(aggregate_space) || !is.null(aggregate_time)) {
     
     # Check for duplicated dates and consecutive time points

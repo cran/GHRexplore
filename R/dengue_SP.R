@@ -2,7 +2,8 @@
 #'
 #' Data frame containing the weekly number of notified dengue cases in
 #' the municipality of *Sao Paulo*, as well as a set of climatic covariates.
-#'
+#' 
+#' @docType data
 #' @format 
 #' A data frame with 678 rows and 8 columns:
 #' \describe{
@@ -16,4 +17,5 @@
 #'   \item{pop}{Number of inhabitants.}
 #' }
 #' @source <https://info.dengue.mat.br/services/api>
+#' @usage data(dengue_SP)
 "dengue_SP"

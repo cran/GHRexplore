@@ -14,7 +14,8 @@ plot_map(
   area = NULL,
   map = NULL,
   map_area = NULL,
-  by_year = TRUE,
+  by_year = NULL,
+  aggregate_time = "year",
   aggregate_time_fun = "mean",
   transform = "identity",
   title = NULL,
@@ -23,7 +24,8 @@ plot_map(
   centering = NULL,
   bins = NULL,
   bins_method = "quantile",
-  bins_label = NULL
+  bins_label = NULL,
+  ...
 )
 }
 \arguments{
@@ -56,7 +58,10 @@ specified in 'area'.}
 (e.g., areal units) in the map object. If not specified, it assumes the same
 name as in \code{area}.}
 
-\item{by_year}{Logical, if TRUE a map for each year is produced.}
+\item{by_year}{Deprecated. Use 'aggregate_time' instead.}
+
+\item{aggregate_time}{Temporal scale for visualization and aggregation. Options
+include "all" (across all time points) and "year" (default).}
 
 \item{aggregate_time_fun}{Character indicating the function to be used
 in the aggregation over time for \code{type="cov"}. Options are "mean" (default),
@@ -86,6 +91,10 @@ Possible values are "quantile" (default) and "equal".}
 
 \item{bins_label}{Optional labels for the bins. They must have the same length
 as the number of bins. Defaults to NULL (default interval labels).}
+
+\item{...}{Additional aesthetics to be passed to geom_sf. Possible values
+include \code{colour} (e.g., \code{colour="black"}), linewidth (e.g., \code{linewidth=0.1}),
+linetype (e.g., \code{linetype=2}), and alpha (e.g., \code{alpha=0.8}).}
 }
 \value{
 A ggplot2 choropleth map.
@@ -108,9 +117,9 @@ plot_map(data = dengue_MS,
          area = "micro_code",  
          map = map_MS,         
          map_area = "code",   
+         aggregate_time = "all",
          aggregate_time_fun = "mean",         
          palette ="Reds",
-         by_year = FALSE,
          var_label= "Min Temp.")
 
 # Categorical covariate
@@ -118,10 +127,10 @@ plot_map(data = dengue_MS,
          var = "biome_name",        
          time = "date",      
          area = "micro_code", 
+         aggregate_time = "all",
          map = map_MS,       
          map_area = "code",  
          palette ="Viridis",
-         by_year = FALSE,
          var_label= "Biome")
 
 # Case counts by year (log)

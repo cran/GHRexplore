@@ -18,6 +18,8 @@ and spatial aggregations. The package also offers extensive customization option
 for the resulting figures. Currently available plotting functions include:
 
 * `plot_timeseries`: Plots time series of covariates, case counts or incidence rates. 
+* `plot_timeseries2`: Plots time series of two covariates, case counts or incidence 
+rates using a dual-axis plot. 
 * `plot_heatmap`: Plots a time series of covariates, case counts or incidence rates
 as heatmaps. 
 * `plot_seasonality`: Plots yearly time series to detect seasonal patterns of 

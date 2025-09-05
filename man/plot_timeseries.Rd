@@ -158,3 +158,6 @@ plot_timeseries(dengue_MS,
                 pt = 1000,
                 transform = "log10p1")                
 }
+\seealso{
+\link{plot_timeseries2} for dual-axis time series plots.
+}
