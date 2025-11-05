@@ -1,6 +1,6 @@
 Package: GHRexplore
 Title: Exploratory Analysis of Temporal and Spatio-Temporal Health Data
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person("Carles", "Milà", , "carles.milagarcia@bsc.es", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0470-0760")),
@@ -18,8 +18,9 @@ Description: A collection of commonly used visualizations of temporal and
     transformations such as temporal and spatial aggregations, while
     offering extensive customization options for the resulting figures.
 License: GPL (>= 2)
-URL: https://earth.bsc.es/gitlab/ghr/ghrexplore
-BugReports: https://earth.bsc.es/gitlab/ghr/ghrexplore/-/issues
+URL: https://gitlab.earth.bsc.es/ghr/ghrexplore,
+        https://bsc-es.github.io/GHRtools/docs/GHRexplore/GHRexplore
+BugReports: https://gitlab.earth.bsc.es/ghr/ghrexplore/-/issues
 Depends: R (>= 4.1.0)
 Imports: colorspace, cowplot, dplyr, ggplot2 (>= 3.5.0), grDevices,
         ISOweek, RColorBrewer, rlang, stats, tidyr
@@ -28,9 +29,9 @@ VignetteBuilder: knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 NeedsCompilation: no
-Packaged: 2025-09-05 08:51:53 UTC; cmilagar
+Packaged: 2025-11-05 13:04:58 UTC; cmilagar
 Author: Carles Milà [aut, cre] (ORCID: <https://orcid.org/0000-0003-0470-0760>),
   Giovenale Moirano [aut] (ORCID:
     <https://orcid.org/0000-0001-8748-3321>),
@@ -38,4 +39,4 @@ Author: Carles Milà [aut, cre] (ORCID: <https://orcid.org/0000-0003-0470-0760>)
   Rachel Lowe [aut, cph] (ORCID: <https://orcid.org/0000-0003-3939-7343>)
 Maintainer: Carles Milà <carles.milagarcia@bsc.es>
 Repository: CRAN
-Date/Publication: 2025-09-05 17:40:02 UTC
+Date/Publication: 2025-11-05 15:50:07 UTC

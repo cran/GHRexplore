@@ -11,8 +11,9 @@ A collection of commonly used visualizations of temporal and spatio-temporal hea
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://earth.bsc.es/gitlab/ghr/ghrexplore}
-  \item Report bugs at \url{https://earth.bsc.es/gitlab/ghr/ghrexplore/-/issues}
+  \item \url{https://gitlab.earth.bsc.es/ghr/ghrexplore}
+  \item \url{https://bsc-es.github.io/GHRtools/docs/GHRexplore/GHRexplore}
+  \item Report bugs at \url{https://gitlab.earth.bsc.es/ghr/ghrexplore/-/issues}
 }
 
 }

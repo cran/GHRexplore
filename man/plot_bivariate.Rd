@@ -14,7 +14,8 @@ plot_bivariate(
   title = NULL,
   var_label = NULL,
   legend = NULL,
-  palette = NULL
+  palette = NULL,
+  ...
 )
 }
 \arguments{
@@ -47,6 +48,9 @@ Single R colors in \code{colors()} or hex codes can be used when there is no gro
 or facets are used. Use "-" before the palette name (e.g., "-Reds") to reverse it.
 Defaults to a dark green when \code{area} is NULL or when \code{facet} is TRUE, otherwise
 defaults to the "IDE2" palette.}
+
+\item{...}{Additional arguments to be passed to \code{geom_point} or \code{geom_boxplot},
+e.g. alpha=0.5 and size=2.}
 }
 \value{
 A ggplot2 scatterplot or boxplot graph.

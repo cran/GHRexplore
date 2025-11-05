@@ -176,7 +176,8 @@ plot_correlation <- function(data,
   }else if(plot_type[1]=="circle"){
     out <- out +
       geom_point(data = cx_lower, 
-                 aes(.data$x, .data$y, color = .data$value, size = .data$value),
+                 aes(.data$x, .data$y, color = .data$value,
+                     size = abs(.data$value)),
                  alpha = 0.95) +
       scale_size_continuous(limits = c(0, 1), range = c(scale*1, scale*10)) +
       guides(size = "none")
@@ -198,7 +199,8 @@ plot_correlation <- function(data,
   }else if(plot_type[2]=="circle"){
     out <- out +
       geom_point(data = cx_upper, 
-                 aes(.data$x, .data$y, color = .data$value, size = .data$value), 
+                 aes(.data$x, .data$y, color = .data$value, 
+                     size = abs(.data$value)), 
                  alpha = 0.95) +
       scale_size_continuous(limits = c(0, 1), range = c(scale*1, scale*10)) +
       guides(size = "none")

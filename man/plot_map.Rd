@@ -92,7 +92,7 @@ Possible values are "quantile" (default) and "equal".}
 \item{bins_label}{Optional labels for the bins. They must have the same length
 as the number of bins. Defaults to NULL (default interval labels).}
 
-\item{...}{Additional aesthetics to be passed to geom_sf. Possible values
+\item{...}{Additional arguments to be passed to \code{geom_sf}. Possible values
 include \code{colour} (e.g., \code{colour="black"}), linewidth (e.g., \code{linewidth=0.1}),
 linetype (e.g., \code{linetype=2}), and alpha (e.g., \code{alpha=0.8}).}
 }

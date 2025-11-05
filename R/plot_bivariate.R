@@ -24,6 +24,8 @@
 #' or facets are used. Use "-" before the palette name (e.g., "-Reds") to reverse it. 
 #' Defaults to a dark green when `area` is NULL or when `facet` is TRUE, otherwise 
 #' defaults to the "IDE2" palette. 
+#' @param ... Additional arguments to be passed to `geom_point` or `geom_boxplot`,
+#' e.g. alpha=0.5 and size=2.
 #' 
 #' @return A ggplot2 scatterplot or boxplot graph.
 #' @export
@@ -72,7 +74,8 @@ plot_bivariate <- function(data,
                            title = NULL,
                            var_label = NULL, 
                            legend = NULL, 
-                           palette = NULL) {
+                           palette = NULL,
+                           ...) {
   
   # Check minimum required arguments are missing
   args <- match.call()
@@ -195,10 +198,11 @@ plot_bivariate <- function(data,
     if(is.null(area)|isTRUE(facet)){
       out <- out +
         ggplot2::geom_boxplot(ggplot2::aes(x = .data$x, y = .data$y, colour = area),
-                              col = single_color)
+                              col = single_color, ...)
     }else{
       out <- out +
-        ggplot2::geom_boxplot(ggplot2::aes(x = .data$x, y = .data$y, colour = area)) +
+        ggplot2::geom_boxplot(ggplot2::aes(x = .data$x, y = .data$y, colour = area),
+                              ...) +
         ggplot2::scale_color_manual(values = my_palette, name = legend) 
     }
     
@@ -208,11 +212,11 @@ plot_bivariate <- function(data,
     if(is.null(area)|isTRUE(facet)){
       out <- out +
         ggplot2::geom_point(ggplot2::aes(x = .data$x, y = .data$y, colour = area),
-                            col = single_color, size = 1.35)
+                            col = single_color, ...)
     }else{
       out <- out +
         ggplot2::geom_point(ggplot2::aes(x = .data$x, y = .data$y, colour = area),
-                            size = 1.35) +
+                            ...) +
         ggplot2::scale_color_manual(values = my_palette, name = legend) 
     }
     

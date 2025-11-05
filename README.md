@@ -40,8 +40,9 @@ team at the [Barcelona Supercomputing Center](https://www.bsc.es/) (BSC) within 
 forecasting of health impacts. It is complemented by the **GHRmodel** package, 
 which is used to define, fit, and assess the models, and by **GHRpredict**, which 
 focuses on generating out-of-sample predictions, conducting cross-validation analyses, 
-and evaluating predictive performance. Both **GHRmodel** and **GHRpredict** are 
-scheduled for release on CRAN in summer 2025.
+and evaluating predictive performance. More information about the toolkit 
+and an online version of the package documentation can be found
+at the [GHR tools website](https://bsc-es.github.io/GHRtools/).
 
 ## Installation
 

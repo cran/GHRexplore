@@ -50,7 +50,7 @@
 #' Possible values are "quantile" (default) and "equal".
 #' @param bins_label Optional labels for the bins. They must have the same length 
 #' as the number of bins. Defaults to NULL (default interval labels).
-#' @param ... Additional aesthetics to be passed to geom_sf. Possible values 
+#' @param ... Additional arguments to be passed to `geom_sf`. Possible values 
 #' include `colour` (e.g., `colour="black"`), linewidth (e.g., `linewidth=0.1`),
 #' linetype (e.g., `linetype=2`), and alpha (e.g., `alpha=0.8`).
 #' @return A ggplot2 choropleth map.
