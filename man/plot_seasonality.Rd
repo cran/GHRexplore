@@ -40,15 +40,16 @@ week for weekly, or the first day of the month for monthly observations.}
 Possible values include 'cov' (covariate, default), 'counts' (case counts),
 and 'inc' (case incidence). If \code{type='inc'}, \code{pop} is required.}
 
-\item{pop}{Character identifying the variable name for population. Only needed
-if \code{type='inc'}.}
+\item{pop}{Character identifying the variable name for population. Only
+needed if \code{type='inc'}.}
 
 \item{pt}{Scale of the person-time (default 100,000) for incidence rates.}
 
 \item{area}{Name of variable that identifies the different locations
 (e.g., areal units) for which a time series is available.}
 
-\item{aggregate_space}{Name of variable used to define spatial aggregation groups.}
+\item{aggregate_space}{Name of variable used to define spatial aggregation
+groups.}
 
 \item{aggregate_time}{Temporal scale used to perform
 temporal aggregation. Options are: "week" (ISO 8601), "month", "year".}
@@ -64,12 +65,14 @@ in the aggregation over time for \code{type="cov"}. Options are "mean" (default)
 \item{transform}{Character, defaults to "identity" (i.e., no transformation).
 Transforms the y-axis for better visualization. Useful options include
 "log10p1" \code{log10(x+1)} for case counts and incidence with 0s, or
-any of the in-built ggplot2 options such as  "log10" \code{log10(x)}, "log1p" \code{log(x+1)},
-and "sqrt" \code{sqrt(x)} (check all possible options using \code{?scale_y_continuous}).}
+any of the in-built ggplot2 options such as  "log10" \code{log10(x)}, "log1p"
+\code{log(x+1)}, and "sqrt" \code{sqrt(x)} (check all possible options using
+\code{?scale_y_continuous}).}
 
 \item{title}{Optional title of the plot.}
 
-\item{var_label}{Character with a custom name for the case or covariate variable.}
+\item{var_label}{Character with a custom name for the case or covariate
+variable.}
 
 \item{ylab}{Label for the y-axis.}
 
@@ -84,8 +87,8 @@ palette name (e.g., "-Reds") to reverse it.}
 A ggplot2 seasonality plot.
 }
 \description{
-Plots yearly time series of covariates, case counts, or incidence
-rates to explore seasonality patterns.
+Plots yearly time series of covariates, case counts, or
+incidence rates to explore seasonality patterns.
 }
 \examples{
 # Load data
@@ -98,30 +101,30 @@ plot_seasonality(dengue_MS,
                  var_label = "Max temp.",
                  type = "cov",
                  area = "micro_code",
-                 aggregate_space = "region_code") 
+                 aggregate_space = "region_code")
 
 # Plot case counts (log scale) with space aggregation
  plot_seasonality(dengue_MS,
                   var = "dengue_cases",
-                  time = "date",  
+                  time = "date",
                   type = "counts",
                   area = "micro_code",
                   aggregate_space = "meso_code",
                   transform = "log10p1",
-                  var_label = "Monthly Dengue Cases", 
-                  xlab = "Month", 
+                  var_label = "Monthly Dengue Cases",
+                  xlab = "Month",
                   ylab = "Number of cases",
                   free_y_scale = TRUE)
-                  
+
 # Seasonality plot of incidence
 plot_seasonality(dengue_MS,
                  var = "dengue_cases",
-                 time = "date",    
+                 time = "date",
                  type = "inc",
                  pop = "population",
                  area = "micro_code",
-                 pt = 1000, 
+                 pt = 1000,
                  title = "Monthly Dengue Incidence",
-                 palette = "Reds")        
-                 
+                 palette = "Reds")
+
 }

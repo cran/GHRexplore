@@ -1,3 +1,11 @@
+# GHRexplore 0.2.2
+
+* Added functions `epiyw_to_date()` and `date_to_epiyw()` to convert between dates and 
+epidemiological year-weeks for all days of the week.
+* Removed ISOweek dependency. 
+* Improved visualization of short time series.
+* Minor refactoring and lint.
+
 # GHRexplore 0.2.1
 
 * Fixed bug in `plot_correlation()` where negative circles were not showing.

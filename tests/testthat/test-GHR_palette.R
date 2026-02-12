@@ -1,11 +1,12 @@
-
 test_that("GHR_palette returns a function", {
   expect_true(is.function(GHR_palette("IDE1")))
 })
 
 test_that("GHR_palette rejects invalid palettes", {
-  expect_error(GHR_palette("InvalidPalette"),
-               "The selected palette is invalid.")
+  expect_error(
+    GHR_palette("InvalidPalette"),
+    "The selected palette is invalid."
+  )
 })
 
 test_that("GHR_palette generates correct number of colors", {
@@ -42,7 +43,6 @@ test_that("GHR_palette with single R color", {
 test_that("GHR_palette with single hex color", {
   expect_silent(GHR_palette(palette = "#03fcca", 5))
   expect_silent(GHR_palette(palette = "-#03fcca"))
-  
 })
 
 test_that("GHR_palette with vector of colors", {

@@ -43,8 +43,8 @@ week for weekly, or the first day of the month for monthly observations.}
 Possible values include 'cov' (covariate, default), 'counts' (case counts),
 and 'inc' (case incidence). If \code{type='inc'}, \code{pop} is required.}
 
-\item{pop}{Character identifying the variable name for population. Only needed
-if \code{type='inc'}.}
+\item{pop}{Character identifying the variable name for population. Only
+needed if \code{type='inc'}.}
 
 \item{pt}{Scale of the person-time (default 100,000) for incidence rates.}
 
@@ -60,8 +60,8 @@ name as in \code{area}.}
 
 \item{by_year}{Deprecated. Use 'aggregate_time' instead.}
 
-\item{aggregate_time}{Temporal scale for visualization and aggregation. Options
-include "all" (across all time points) and "year" (default).}
+\item{aggregate_time}{Temporal scale for visualization and aggregation.
+Options include "all" (across all time points) and "year" (default).}
 
 \item{aggregate_time_fun}{Character indicating the function to be used
 in the aggregation over time for \code{type="cov"}. Options are "mean" (default),
@@ -70,15 +70,17 @@ in the aggregation over time for \code{type="cov"}. Options are "mean" (default)
 \item{transform}{Character, defaults to "identity" (i.e., no transformation).
 Transforms the color ramp for better visualization. Useful options include
 "log10p1" \code{log10(x+1)} for case counts and incidence with 0s, or
-any of the in-built ggplot2 options such as  "log10" \code{log10(x)}, "log1p" \code{log(x+1)},
-and "sqrt" \code{sqrt(x)} (check all possible options using \code{?scale_y_continuous}).}
+any of the in-built ggplot2 options such as  "log10" \code{log10(x)}, "log1p"
+\code{log(x+1)},  and "sqrt" \code{sqrt(x)} (check all possible options using
+\code{?scale_y_continuous}).}
 
 \item{title}{Optional title of the plot.}
 
-\item{var_label}{Character with a custom name for the case or covariate variable.}
+\item{var_label}{Character with a custom name for the case or covariate
+variable.}
 
-\item{palette}{GHR, RColorBrewer or colorspace palette. Use "-" before the palette
-name (e.g., "-Reds") to reverse it.}
+\item{palette}{GHR, RColorBrewer or colorspace palette. Use "-" before
+the palette name (e.g., "-Reds") to reverse it.}
 
 \item{centering}{Numerical or "median", defaults to NULL. If set,
 it centers the palette on that value.}
@@ -86,11 +88,12 @@ it centers the palette on that value.}
 \item{bins}{Number of bins for categorization of numerical variables.
 Defaults to NULL (no binning).}
 
-\item{bins_method}{Method to compute the bins, only used when \code{bins} is not NULL.
-Possible values are "quantile" (default) and "equal".}
+\item{bins_method}{Method to compute the bins, only used when \code{bins}
+is not NULL.  Possible values are "quantile" (default) and "equal".}
 
-\item{bins_label}{Optional labels for the bins. They must have the same length
-as the number of bins. Defaults to NULL (default interval labels).}
+\item{bins_label}{Optional labels for the bins. They must have the
+same length as the number of bins. Defaults to NULL (default interval
+labels).}
 
 \item{...}{Additional arguments to be passed to \code{geom_sf}. Possible values
 include \code{colour} (e.g., \code{colour="black"}), linewidth (e.g., \code{linewidth=0.1}),
@@ -110,51 +113,51 @@ data("dengue_MS")
 data("map_MS")
 
 # Temporal average of a covariate
-plot_map(data = dengue_MS, 
-         var = "tmin",  
-         time = "date",       
+plot_map(data = dengue_MS,
+         var = "tmin",
+         time = "date",
          type = "cov",
-         area = "micro_code",  
-         map = map_MS,         
-         map_area = "code",   
+         area = "micro_code",
+         map = map_MS,
+         map_area = "code",
          aggregate_time = "all",
-         aggregate_time_fun = "mean",         
+         aggregate_time_fun = "mean",
          palette ="Reds",
          var_label= "Min Temp.")
 
 # Categorical covariate
-plot_map(data = dengue_MS, 
-         var = "biome_name",        
-         time = "date",      
-         area = "micro_code", 
+plot_map(data = dengue_MS,
+         var = "biome_name",
+         time = "date",
+         area = "micro_code",
          aggregate_time = "all",
-         map = map_MS,       
-         map_area = "code",  
+         map = map_MS,
+         map_area = "code",
          palette ="Viridis",
          var_label= "Biome")
 
 # Case counts by year (log)
 dengue_MS |>
-  plot_map(var = "dengue_cases",    
-           time = "date",    
+  plot_map(var = "dengue_cases",
+           time = "date",
            type = "counts",
-           area = "micro_code", 
+           area = "micro_code",
            pop = "population",
-           map = map_MS,   
+           map = map_MS,
            map_area = "code",
            palette = "Reds",
            transform = "log10p1")
 
 # Case incidence by year, binned
 plot_map(dengue_MS,
-         var = "dengue_cases", 
+         var = "dengue_cases",
          type = "inc",
          time = "date",
          area = "micro_code",
          pop = "population",
          pt = 1000,
-         map = map_MS, 
+         map = map_MS,
          map_area = "code",
-         bins = 5,   
+         bins = 5,
          palette = "Viridis")
 }

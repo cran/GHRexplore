@@ -63,7 +63,7 @@ municipality in the \emph{Mato Grosso do Sul} state of Brazil and a set
 of spatial and spatio-temporal covariates.
 }
 \details{
-In addition to the dengue counts, the dataset contains a set of environmental,
+In addition to the dengue counts, the dataset contains environmental,
 socio-economic and meteo-climatic factors. This dataset is a subset of the
 original containing observations over the entire Brazil.
 }

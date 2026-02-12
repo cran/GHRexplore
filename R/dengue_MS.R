@@ -1,16 +1,16 @@
 #' Dengue cases in *Mato Grosso do Sul*
 #'
 #' Monthly number of notified dengue cases by
-#' municipality in the *Mato Grosso do Sul* state of Brazil and a set 
+#' municipality in the *Mato Grosso do Sul* state of Brazil and a set
 #' of spatial and spatio-temporal covariates.
-#' 
+#'
 #' @details
-#' In addition to the dengue counts, the dataset contains a set of environmental,
-#' socio-economic and meteo-climatic factors. This dataset is a subset of the 
-#' original containing observations over the entire Brazil. 
-#' 
+#' In addition to the dengue counts, the dataset contains environmental,
+#' socio-economic and meteo-climatic factors. This dataset is a subset of the
+#' original containing observations over the entire Brazil.
+#'
 #' @docType data
-#' @format 
+#' @format
 #' A data frame with 2,640 rows and 27 columns:
 #' \describe{
 #'   \item{micro_code}{Unique ID number for each micro region (11 units).}
@@ -37,7 +37,7 @@
 #'    notifiable diseases system in Brazil (SINAN) in the microregion of
 #'    reference, at the month of first symptoms.}
 #'   \item{population}{Estimated population based on projections calculated
-#'     using the 2000 and 2010 censuses, as well as population counts from 2007 
+#'     using the 2000 and 2010 censuses, as well as population counts from 2007
 #'     and 2017.}
 #'   \item{pop_density}{Population density (number of people per km2).}
 #'   \item{tmax}{Monthly average daily maximum temperature; gridded values

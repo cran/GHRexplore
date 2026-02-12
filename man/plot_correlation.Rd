@@ -30,16 +30,16 @@ containing custom names for the variables.}
 (default), "spearman" or "kendall".}
 
 \item{plot_type}{Character vector of length 2 indicating the type of plot to
-use in the lower triangular and diagonal (1st element) and the upper triangular
-(2nd element). Options include "circle", "number" and "raster".}
+use in the lower triangular and diagonal (1st element) and the upper
+triangular (2nd element). Options include "circle", "number" and "raster".}
 
 \item{scale}{Circle and number size multiplier, e.g. 1.1 increases
 the size a 10\% while 0.9 decreases it a 10\%.}
 
 \item{title}{Optional title of the plot.}
 
-\item{palette}{GHR, RColorBrewer or colorspace palette. Use "-" before the palette
-name (e.g., "-Reds") to reverse it.}
+\item{palette}{GHR, RColorBrewer or colorspace palette. Use "-" before
+the palette name (e.g., "-Reds") to reverse it.}
 
 \item{print}{Logical. If TRUE, print the correlation matrix.}
 }
@@ -54,27 +54,29 @@ Plots a correlation matrix of a series of variables.
 data("dengue_MS")
 
 # Pearson correlation plot
-plot_correlation(dengue_MS, 
+plot_correlation(dengue_MS,
                  method = "pearson",
-                 var = c("dengue_cases","pop_density", 
+                 var = c("dengue_cases","pop_density",
                          "tmax", "tmin", "pdsi", "urban",
-                         "water_network", "water_shortage"),  
-                 var_label = c("dengue cases","pop. density", 
-                               "max temp", "min temp", "drought index", "urbanization",
+                         "water_network", "water_shortage"),
+                 var_label = c("dengue cases","pop. density",
+                               "max temp", "min temp",
+                               "drought index", "urbanization",
                                "water network", "water shortage"),
-                 title = "Correlation matrix") 
+                 title = "Correlation matrix")
 
-# Print spearman correlation plot of type 'raster' and 'number' 
-# with another palette 
+# Print spearman correlation plot of type 'raster' and 'number'
+# with another palette
 plot_correlation(dengue_MS,
                  method = "spearman",
-                 var = c("dengue_cases","pop_density", 
+                 var = c("dengue_cases","pop_density",
                          "tmax", "tmin", "pdsi", "urban",
-                         "water_network", "water_shortage"),  
-                 var_label = c("dengue cases","pop. density", 
-                               "max temp", "min temp", "drought index", "urbanization",
+                         "water_network", "water_shortage"),
+                 var_label = c("dengue cases","pop. density",
+                               "max temp", "min temp",
+                               "drought index", "urbanization",
                                "water network", "water shortage"),
                  plot_type = c("raster", "number"),
-                 palette = "-Blue-Red 3") 
+                 palette = "-Blue-Red 3")
 
 }

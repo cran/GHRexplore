@@ -44,7 +44,7 @@ plots <- plot_multiple(
   facet = TRUE)
 
 # Acess individual plots
-print(plots[[1]])  
+print(plots[[1]])
 
 # Multiple heatmap plots
 plots <- plot_multiple(
@@ -72,15 +72,15 @@ plots <- plot_multiple(
 
 # Multiple map plots
 plots <- plot_multiple(
-  plot_function = plot_map, 
+  plot_function = plot_map,
   data = dengue_MS,
   var = c("dengue_cases", "dengue_cases", "tmax"),
   type = c("counts", "inc", "cov"),
   pop = "population",
   var_label = c("Dengue Cases", "Dengue inc", "Max Temp"),
   palette = c("Reds", "Blues", "Viridis"),
-  map = map_MS,         
-  map_area = "code",    
+  map = map_MS,
+  map_area = "code",
   time = "date",
   area = "micro_code")
 }

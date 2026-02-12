@@ -1,6 +1,6 @@
 test_that("plot_compare returns a ggplot object for valid inputs", {
   data("dengue_MS")
-  
+
   # Time series
   p1 <- plot_compare(
     plot_function = plot_timeseries,
@@ -11,8 +11,9 @@ test_that("plot_compare returns a ggplot object for valid inputs", {
     area = "micro_code",
     var_label = c("PDSI", "Max Temp"),
     combine_legend = FALSE,
-    ncol = 1)
-  
+    ncol = 1
+  )
+
   # Heatmap
   p2 <- plot_compare(
     plot_function = plot_heatmap,
@@ -23,8 +24,9 @@ test_that("plot_compare returns a ggplot object for valid inputs", {
     area = "micro_code",
     var_label = c("PDSI", "Max Temp"),
     combine_legend = FALSE,
-    ncol = 1)
-  
+    ncol = 1
+  )
+
   # Seasonality
   p3 <- plot_compare(
     plot_function = plot_seasonality,
@@ -35,8 +37,9 @@ test_that("plot_compare returns a ggplot object for valid inputs", {
     area = "micro_code",
     var_label = c("PDSI", "Max Temp"),
     combine_legend = FALSE,
-    ncol = 1)
-  
+    ncol = 1
+  )
+
   expect_s3_class(p1, "gg")
   expect_s3_class(p2, "gg")
   expect_s3_class(p3, "gg")
@@ -44,21 +47,22 @@ test_that("plot_compare returns a ggplot object for valid inputs", {
 
 test_that("plot_compare throws error for unnamed arguments", {
   data("dengue_MS")
-  
+
   expect_error(
     plot_compare(
       plot_function = plot_timeseries,
       data = dengue_MS,
       var = c("pdsi"),
       type = c("cov"),
-      "time"),
+      "time"
+    ),
     "All additional arguments must be named"
   )
 })
 
 test_that("plot_compare validates input plot_function", {
   data("dengue_MS")
-  
+
   expect_error(
     plot_compare(
       plot_function = "bad_function",
@@ -88,7 +92,7 @@ test_that("plot_compare validates input data type", {
 
 test_that("plot_compare checks missing variables in data", {
   data("dengue_MS")
-  
+
   expect_error(
     plot_compare(
       plot_function = plot_timeseries,
@@ -102,10 +106,10 @@ test_that("plot_compare checks missing variables in data", {
   )
 })
 
-test_that("plot_compare errors when combine_legend is TRUE for heatmap or map", {
+test_that("plot_compare errors when combine_legend is TRUE heatmap or map", {
   data("dengue_MS")
   data("map_MS")
-  
+
   expect_error(
     plot_compare(
       plot_function = plot_heatmap,
@@ -121,9 +125,9 @@ test_that("plot_compare errors when combine_legend is TRUE for heatmap or map", 
   )
 })
 
-test_that("plot_compare errors when palette is a vector and combine_legend = TRUE", {
+test_that("plot_compare errors when palette is a vector and combine_legend", {
   data("dengue_MS")
-  
+
   expect_error(
     plot_compare(
       plot_function = plot_seasonality,

@@ -41,19 +41,20 @@ week for weekly, or the first day of the month for monthly observations.}
 
 \item{type}{A character vector of length 2 (left axis, right axis) that
 specifies the types of variable in \code{var}. Possible values include
-'cov' (covariate, default), 'counts' (case counts), and 'inc' (case incidence).
-If \code{type='inc'}, \code{pop} is required.}
+'cov' (covariate, default), 'counts' (case counts), and 'inc' (case
+incidence). If \code{type='inc'}, \code{pop} is required.}
 
-\item{pop}{Character identifying the variable name for population. Only needed
-if \code{type='inc'}.}
+\item{pop}{Character identifying the variable name for population. Only
+needed if \code{type='inc'}.}
 
-\item{pt}{Numerical only used for \code{type='inc'}. It represents the scale of the
-person-time (default 100,000) for incidence rates.}
+\item{pt}{Numerical only used for \code{type='inc'}. It represents the scale
+of the person-time (default 100,000) for incidence rates.}
 
 \item{area}{Name of variable that identifies the different locations
 (e.g., areal units) for which a time series is available.}
 
-\item{aggregate_space}{Name of variable used to define spatial aggregation groups.}
+\item{aggregate_space}{Name of variable used to define spatial aggregation
+groups.}
 
 \item{aggregate_time}{Temporal scale used to perform
 temporal aggregation. Options are: "week" (ISO 8601), "month", "year".}
@@ -67,8 +68,8 @@ in the aggregation over time for \code{type="cov"}. Options are "mean" (default)
 "median", "sum". For case counts and incidence, "sum" is always applied.}
 
 \item{align}{Options to align the two plots. Defaults to "min", which forces
-the minimum of the two variables to be aligned. Other options include "mean" and
-"median".}
+the minimum of the two variables to be aligned. Other options include "mean"
+and "median".}
 
 \item{title}{Optional title of the plot.}
 
@@ -84,8 +85,9 @@ custom names for the case or covariate variable.}
 \item{free_y_scale}{Logical, default FALSE. Allows different scales in the
 y_axis when facets are used.}
 
-\item{palette}{A character vector of length 2 (left axis, right axis) indicating
-the colours (R or hex codes) to use for each of the two variables).}
+\item{palette}{A character vector of length 2 (left axis, right axis)
+indicating the colours (R or hex codes) to use for each of the two
+variables).}
 
 \item{alpha}{Numerical between 0 and 1 determining the transparency of the
 lines.}
@@ -94,8 +96,8 @@ lines.}
 A dual-axis ggplot2 time series plot.
 }
 \description{
-Plots dual-axis time series of two covariates, case counts, or incidence
-rates.
+Plots dual-axis time series of two covariates, case counts, or
+incidence rates.
 }
 \examples{
 # Load data
@@ -109,7 +111,7 @@ plot_timeseries2(dengue_SP,
                  align = "mean",
                  aggregate_time = "month")
 
-# Plotting case incidence and a covariate with temporal aggregation 
+# Plotting case incidence and a covariate with temporal aggregation
 # and customized colours and labels
 plot_timeseries2(dengue_SP,
                  var = c("cases", "precip_tot"),
@@ -121,7 +123,7 @@ plot_timeseries2(dengue_SP,
                  aggregate_time = "month",
                  palette = c("darkgreen", "royalblue"),
                  alpha = 0.8)
-                 
+
 # Plotting case incidence and a covariate with spatial aggregation
 plot_timeseries2(dengue_MS,
                  var = c("dengue_cases", "pdsi"),

@@ -44,13 +44,13 @@ each facet.}
 \item{legend}{A character vector with a custom name for the legend.}
 
 \item{palette}{GHR, RColorBrewer or colorspace palette (e.g. "Purp").
-Single R colors in \code{colors()} or hex codes can be used when there is no grouping
-or facets are used. Use "-" before the palette name (e.g., "-Reds") to reverse it.
-Defaults to a dark green when \code{area} is NULL or when \code{facet} is TRUE, otherwise
-defaults to the "IDE2" palette.}
+Single R colors in \code{colors()} or hex codes can be used when there is no
+grouping or facets are used. Use "-" before the palette name
+(e.g., "-Reds") to reverse it. Defaults to a dark green when \code{area} is
+NULL or when \code{facet} is TRUE, otherwise defaults to the "IDE2" palette.}
 
-\item{...}{Additional arguments to be passed to \code{geom_point} or \code{geom_boxplot},
-e.g. alpha=0.5 and size=2.}
+\item{...}{Additional arguments to be passed to \code{geom_point} or
+\code{geom_boxplot}, e.g. alpha=0.5 and size=2.}
 }
 \value{
 A ggplot2 scatterplot or boxplot graph.
@@ -65,12 +65,12 @@ grouped boxplots if one of them is categorical.
 data("dengue_MS")
 
 # Scatter (two numeric variables) - No grouping
-plot_bivariate(dengue_MS, 
-               var = c("pop_density", "tmin"), 
+plot_bivariate(dengue_MS,
+               var = c("pop_density", "tmin"),
                palette = "#d04a2d")
 
 # Scatter (two numeric variables) - Grouping in the same graph
-plot_bivariate(dengue_MS, 
+plot_bivariate(dengue_MS,
                var = c("pop_density", "tmin"),
                var_label = c("Pop. density", "Min temp."),
                area = "micro_code")
@@ -79,18 +79,18 @@ plot_bivariate(dengue_MS,
 plot_bivariate(dengue_MS,
                var = c("pop_density", "tmin"),
                var_label = c("Pop. density", "Min temp."),
-               area = "micro_code", facet = TRUE, 
+               area = "micro_code", facet = TRUE,
                free_x_scale = TRUE)
 
 # Boxplots (one numeric, one categorical) - No grouping
-plot_bivariate(dengue_MS, 
-               var = c("pop_density", "biome_name"), 
+plot_bivariate(dengue_MS,
+               var = c("pop_density", "biome_name"),
                var_label = c("Pop. density", "Min temp."),
                palette = "royalblue")
 
 # Boxplots (one numeric, one categorical) - Grouping
-plot_bivariate(dengue_MS, 
-               var = c("biome_name", "tmin"), 
+plot_bivariate(dengue_MS,
+               var = c("biome_name", "tmin"),
                area = "meso_code",
                palette = "Accent")
 }

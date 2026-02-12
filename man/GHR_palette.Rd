@@ -29,7 +29,8 @@ Creates a visualization of all custom GHR palettes.
 }
 \details{
 See all available options by running \code{GHR_palettes()},
-\code{RColorBrewer::display.brewer.all()} and \code{colorspace::hcl_palettes(plot=TRUE)}.
+\code{RColorBrewer::display.brewer.all()} and
+\code{colorspace::hcl_palettes(plot=TRUE)}.
 }
 \examples{
 GHR_palette("IDE1", 5)(5)

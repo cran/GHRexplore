@@ -43,16 +43,17 @@ week for weekly, or the first day of the month for monthly observations.}
 Possible values include 'cov' (covariate, default), 'counts' (case counts),
 and 'inc' (case incidence). If \code{type='inc'}, \code{pop} is required.}
 
-\item{pop}{Character identifying the variable name for population. Only needed
-if \code{type='inc'}.}
+\item{pop}{Character identifying the variable name for population. Only
+needed if \code{type='inc'}.}
 
-\item{pt}{Numerical only used for \code{type='inc'}. It represents the scale of the
-person-time (default 100,000) for incidence rates.}
+\item{pt}{Numerical only used for \code{type='inc'}. It represents the scale
+of the person-time (default 100,000) for incidence rates.}
 
 \item{area}{Name of variable that identifies the different locations
 (e.g., areal units) for which a time series is available.}
 
-\item{aggregate_space}{Name of variable used to define spatial aggregation groups.}
+\item{aggregate_space}{Name of variable used to define spatial
+aggregation groups.}
 
 \item{aggregate_time}{Temporal scale used to perform
 temporal aggregation. Options are: "week" (ISO 8601), "month", "year".}
@@ -74,12 +75,14 @@ only color the selected spatial unit and set all the rest to grey.}
 \item{transform}{Character, defaults to "identity" (i.e., no transformation).
 Transforms the y-axis for better visualization. Useful options include
 "log10p1" \code{log10(x+1)} useful for case counts and incidence with 0s, or
-any of the in-built ggplot2 options such as  "log10" \code{log10(x)}, "log1p" \code{log(x+1)},
-and "sqrt" \code{sqrt(x)} (check all possible options using \code{?scale_y_continuous}).}
+any of the in-built ggplot2 options such as  "log10" \code{log10(x)}, "log1p"
+\code{log(x+1)}, and "sqrt" \code{sqrt(x)} (check all possible options using
+\code{?scale_y_continuous}).}
 
 \item{title}{Optional title of the plot.}
 
-\item{var_label}{Character with a custom name for the case or covariate variable.}
+\item{var_label}{Character with a custom name for the case or covariate
+variable.}
 
 \item{legend}{Character with a custom name for the legend.}
 
@@ -101,7 +104,8 @@ Defaults to a dark green when \code{area} is NULL, when \code{facet} is TRUE or 
 A ggplot2 time series plot.
 }
 \description{
-Plots time series of covariates, case counts, or incidence rates.
+Plots time series of covariates, case counts, or incidence
+rates.
 }
 \examples{
 # Load data
@@ -110,11 +114,11 @@ data("dengue_MS")
 # Plotting a covariate, all areas in a single graph
 plot_timeseries(dengue_MS,
                 var = "tmin",
-                time = "date",          
+                time = "date",
                 type = "cov",
-                area = "micro_code",   
-                title = "Minimun Temperature") 
-                
+                area = "micro_code",
+                title = "Minimun Temperature")
+
 # Plotting a covariate with space aggregation and different facets
 plot_timeseries(dengue_MS,
                 var = "tmin",
@@ -123,40 +127,40 @@ plot_timeseries(dengue_MS,
                 area = "micro_code",
                 aggregate_space = "meso_code",
                 aggregate_space_fun = "mean",
-                facet = TRUE,           
+                facet = TRUE,
                 var_label= "Minimum Temperature",
                 palette = "violetred")
-                
-# Plotting counts, highlight a single area 
+
+# Plotting counts, highlight a single area
 plot_timeseries(dengue_MS,
-                var = "dengue_cases", 
-                time = "date",         
+                var = "dengue_cases",
+                time = "date",
                 type = "counts",
                 pop = "population",
-                area = "micro_code",  
+                area = "micro_code",
                 title= "Dengue cases",
                 highlight = "50001")
 
-# Plot disease counts (log scale) with temporal and spatial aggregation             
+# Plot disease counts (log scale) with temporal and spatial aggregation
 plot_timeseries(dengue_MS,
-                var = "dengue_cases", 
-                time = "date",      
+                var = "dengue_cases",
+                time = "date",
                 type = "counts",
-                area = "micro_code",   
+                area = "micro_code",
                 aggregate_space = "meso_code",
                 aggregate_time = "year",
                 title = "Yearly Cases",
-                transform = "log10") 
-               
+                transform = "log10")
+
 # Plot incidence for 1,000 people with a Brewer palette and log y axis
 plot_timeseries(dengue_MS,
                 var = "dengue_cases",
-                time = "date",          
+                time = "date",
                 type = "inc",
                 pop = "population",
-                area = "micro_code",  
+                area = "micro_code",
                 pt = 1000,
-                transform = "log10p1")                
+                transform = "log10p1")
 }
 \seealso{
 \link{plot_timeseries2} for dual-axis time series plots.

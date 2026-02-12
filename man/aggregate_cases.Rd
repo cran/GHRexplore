@@ -33,7 +33,8 @@ week for weekly, or the first day of the month for monthly observations.}
 
 \item{pt}{Scale of the person-time (default 100,000) for incidence rates.}
 
-\item{aggregate_space}{Name of variable used to define spatial aggregation groups.}
+\item{aggregate_space}{Name of variable used to define spatial
+aggregation groups.}
 
 \item{aggregate_time}{Temporal scale used to perform
 temporal aggregation. Options are: "week" (ISO 8601), "month", "year".}

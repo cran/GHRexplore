@@ -8,7 +8,8 @@ plot_compare(plot_function, data, var, type, ...)
 }
 \arguments{
 \item{plot_function}{Indicates which of the plot types to use.
-Options are: 'plot_timeseries', 'plot_heatmap', 'plot_seasonality', 'plot_map'.}
+Options are: 'plot_timeseries', 'plot_heatmap', 'plot_seasonality',
+and 'plot_map'.}
 
 \item{data}{Data frame containing equally spaced (daily, weekly, monthly)
 covariate or disease case observations for one or multiple locations.}
@@ -48,10 +49,10 @@ plot_compare(
   pop = "population",
   time = "date",
   area = "micro_code",
-  var_label = c("Dengue inc", "PDSI"), 
-  combine_legend = TRUE, 
+  var_label = c("Dengue inc", "PDSI"),
+  combine_legend = TRUE,
   ncol_legend = 1,
-  ncol = 1, 
+  ncol = 1,
   align = "h")
 
 # Comparing seasonality plots
@@ -65,7 +66,7 @@ plot_compare(
   area = "micro_code",
   aggregate_space = "region_code",
   pt = 100,
-  var_label = c("Dengue Cases", "Dengue inc", "Min Temp"), 
+  var_label = c("Dengue Cases", "Dengue inc", "Min Temp"),
   ncol_legend = 1,
   combine_legend = TRUE)
 
@@ -74,11 +75,11 @@ plot_compare(
   plot_function = plot_heatmap,
   data = dengue_MS,
   var = c("dengue_cases", "pdsi"),
-  type = c("inc", "cov"),   
+  type = c("inc", "cov"),
   pop = "population",
   time = "date",
   area = "micro_code",
-  var_label = c("Dengue Cases", "Min Temp"), 
+  var_label = c("Dengue Cases", "Min Temp"),
   palette = c("Reds", "Blues"),
   ncol_legend = 1,
   combine_xaxis = TRUE)
@@ -88,14 +89,14 @@ plot_compare(
   plot_function = plot_map,
   data = dengue_MS,
   var = c("dengue_cases", "tmax"),
-  type = c("inc", "cov"),  
+  type = c("inc", "cov"),
   pop = "population",
   time = "date",
   area = "micro_code",
-  var_label= c("Dengue Incidence", "Max Temperature"), 
+  var_label= c("Dengue Incidence", "Max Temperature"),
   palette = c("Reds", "Blues"),
-  map = map_MS,        
-  map_area = "code", 
+  map = map_MS,
+  map_area = "code",
   aggregate_time = "all",
   ncol_legend = 1,
   combine_xaxis =TRUE)

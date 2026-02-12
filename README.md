@@ -1,7 +1,7 @@
 # GHRexplore  <img src='man/figures/logo_IDExtremes.jpg' align="right" width="18%" /> <span> <span> <img src='man/figures/logo_BSC.png' align="right" width="16%" /> 
 
 <!-- badges: start -->
-[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
+[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/GHRexplore)](https://cran.r-project.org/package=GHRexplore)
 [![CRAN downloads total](http://cranlogs.r-pkg.org/badges/grand-total/GHRexplore)](https://cran.r-project.org/package=GHRexplore)
 [![CRAN downloads month](http://cranlogs.r-pkg.org/badges/GHRexplore)](https://cran.r-project.org/package=GHRexplore)
@@ -29,6 +29,7 @@ covariates, case counts or incidence rates.
 * `plot_bivariate`: Plots a bivariate plot of two numerical and/or categorical variables.
 * `plot_multiple`, `plot_combine` and `plot_compare`: Used to generate graphs of 
 several variables at the same time.
+* `epiyw_to_date` and `date_to_epiyw`: Functions to convert between dates and epidemiological year-weeks for any day of the week.
 
 <br>
 

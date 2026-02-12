@@ -40,16 +40,17 @@ week for weekly, or the first day of the month for monthly observations.}
 Possible values include 'cov' (covariate, default), 'counts' (case counts),
 and 'inc' (case incidence). If \code{type='inc'}, \code{pop} is required.}
 
-\item{pop}{Character identifying the variable name for population. Only needed
-if \code{type='inc'}.}
+\item{pop}{Character identifying the variable name for population. Only
+needed if \code{type='inc'}.}
 
-\item{pt}{Numerical only used for \code{type='inc'}. It represents the scale of the
-person-time (default 100,000) for incidence rates.}
+\item{pt}{Numerical only used for \code{type='inc'}. It represents the scale
+of the person-time (default 100,000) for incidence rates.}
 
 \item{area}{Name of variable that identifies the different locations
 (i.e., areal units) for which a time series is available.}
 
-\item{aggregate_space}{Name of variable used to define spatial aggregation groups.}
+\item{aggregate_space}{Name of variable used to define spatial aggregation
+groups.}
 
 \item{aggregate_time}{Temporal scale used to perform
 temporal aggregation. Options are: "week" (ISO 8601), "month", "year".}
@@ -65,19 +66,21 @@ in the aggregation over time for \code{type="cov"}. Options are "mean" (default)
 \item{transform}{Character, defaults to "identity" (i.e., no transformation).
 Transforms the color ramp for better visualization. Useful options include
 "log10p1" \code{log10(x+1)} useful for case counts and incidence with 0s, or
-any of the in-built ggplot2 options such as  "log10" \code{log10(x)}, "log1p" \code{log(x+1)},
-and "sqrt" \code{sqrt(x)} (check all possible options using \code{?scale_y_continuous}).}
+any of the in-built ggplot2 options such as  "log10" \code{log10(x)}, "log1p"
+\code{log(x+1)}, and "sqrt" \code{sqrt(x)} (check all possible options using
+\code{?scale_y_continuous}).}
 
 \item{title}{Optional title of the plot.}
 
-\item{var_label}{Character with a custom name for the case or covariate variable.}
+\item{var_label}{Character with a custom name for the case or covariate
+variable.}
 
 \item{ylab}{Label for the y-axis.}
 
 \item{xlab}{Label for the x-axis.}
 
-\item{palette}{GHR, RColorBrewer or colorspace palette. Use "-" before the palette
-name (e.g., "-Reds") to reverse it.}
+\item{palette}{GHR, RColorBrewer or colorspace palette. Use "-" before
+the palette name (e.g., "-Reds") to reverse it.}
 
 \item{centering}{Numerical or "median", defaults to NULL. If set,
 it centers the palette on that value.}
@@ -100,28 +103,28 @@ plot_heatmap(dengue_MS,
              var_label = "Minimum\ntemp.",
              type = "cov",
              area = "micro_code",
-             aggregate_space = "meso_code",  
+             aggregate_space = "meso_code",
              palette = "Blue-Red")
 
 # Case count heatmap with log scale
 plot_heatmap(dengue_MS,
-             var = "dengue_cases", 
-             time = "date",  
+             var = "dengue_cases",
+             time = "date",
              type = "counts",
-             area = "micro_code",  
-             palette = "Reds", 
-             title = "Dengue counts", 
+             area = "micro_code",
+             palette = "Reds",
+             title = "Dengue counts",
              var_label = "Dengue \ncounts",
-             transform = "log10p1")  
-             
+             transform = "log10p1")
+
 # Case incidence (for 1,000 persons) heatmap with space aggregation
 plot_heatmap(dengue_MS,
-             var = "dengue_cases", 
-             time = "date",          
+             var = "dengue_cases",
+             time = "date",
              type = "inc",
              pop = "population",
              pt = 1000,
-             area = "micro_code", 
-             aggregate_space = "meso_code", 
-             palette = "Purp")            
+             area = "micro_code",
+             aggregate_space = "meso_code",
+             palette = "Purp")
 }

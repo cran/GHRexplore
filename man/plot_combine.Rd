@@ -39,13 +39,14 @@ Options are "none", "hv" (align in both directions), "h", and "v" (default).}
 number of colums in which to align plots and the common legend. Default is 2.}
 
 \item{nrow_l}{When combine_legend = TRUE,
-number of rows in which to align plots and the common legend. Default is NULL.}
+number of rows in which to align plots and the common legend. Default is
+NULL.}
 
-\item{rel_widths_l}{When combine_legend = TRUE,
-vector of widths in which to align plots and the common legend. Default is c(3, 1).}
+\item{rel_widths_l}{When combine_legend = TRUE, vector of widths in which to
+align plots and the common legend. Default is c(3, 1).}
 
-\item{rel_heights_l}{When combine_legend = TRUE,
-vector of heights in which to align plots and the common legend. Default is c(1, 1).}
+\item{rel_heights_l}{When combine_legend = TRUE, vector of heights in which
+to align plots and the common legend. Default is c(1, 1).}
 
 \item{ncol_legend}{When combine_legend = TRUE,
 number of columns the legend should be distributed in. Default is one column.}
@@ -54,11 +55,12 @@ number of columns the legend should be distributed in. Default is one column.}
 A single (cow)plot including the provided multiple plots.
 }
 \description{
-Combines plots, each representing one variable, into a single plot.
+Combines plots, each representing one variable, into a
+single plot.
 }
 \details{
-This function takes any input from the \code{cowplot::plot_grid} function to
-customize the organization of the plots.
+This function takes any input from the \code{cowplot::plot_grid}
+function to customize the organization of the plots.
 }
 \examples{
 # Load data
@@ -77,7 +79,7 @@ plots <- plot_multiple(
   area = "micro_code")
 
 # Combine them with a shared legend
-plot_combine(plot_list = plots, 
+plot_combine(plot_list = plots,
              ncol = 1,
              align = "v",
              combine_legend = TRUE,
